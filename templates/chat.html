@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}会话 - 闲置市场{% endblock %}
+{% block body_class %}chat-page{% endblock %}
+{% block content %}
+<div class="chat" id="chat-root" data-item-id="{{ item_id or '' }}" data-conv-id="{{ conv_id or '' }}"></div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='chat.js') }}"></script>
+{% endblock %}

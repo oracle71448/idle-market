@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}我的 - 闲置市场{% endblock %}
+{% block content %}
+<section class="page-hero">
+    <h1>个人中心</h1>
+    <p>管理你的资料与发布</p>
+</section>
+
+<div class="profile-card">
+    <div class="profile-avatar" id="pf-avatar">明</div>
+    <div class="profile-info">
+        <div class="profile-name" id="pf-name">小明</div>
+        <div class="profile-sub">本地模拟账号 · 无需登录</div>
+    </div>
+    <a class="btn btn-contact" href="/messages">我的消息</a>
+</div>
+
+<div class="profile-stats">
+    <div class="stat"><strong id="pf-stat-active">0</strong><span>在售</span></div>
+    <div class="stat"><strong id="pf-stat-removed">0</strong><span>已下架</span></div>
+    <div class="stat"><strong id="pf-stat-total">0</strong><span>累计发布</span></div>
+</div>
+
+<h2 class="section-title">我发布的商品</h2>
+<div class="my-items" id="my-items"></div>
+<div class="empty-state hidden" id="my-empty">
+    <h2>还没有发布商品</h2>
+    <p>去发布你的第一件闲置吧</p>
+    <a class="btn" href="/post">去发布</a>
+</div>
+
+<div class="platform-notice storage-notice">
+    <strong>数据说明：</strong>个人资料与商品数据均保存在当前浏览器的本地存储中，刷新页面会保留；更换设备或清除浏览器数据后无法恢复。
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='profile.js') }}"></script>
+{% endblock %}

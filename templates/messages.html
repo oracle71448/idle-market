@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}消息 - 闲置市场{% endblock %}
+{% block content %}
+<section class="page-hero">
+    <h1>消息</h1>
+    <p>与买家或卖家聊聊</p>
+</section>
+
+<div class="conv-list" id="conv-list"></div>
+
+<div class="empty-state hidden" id="conv-empty">
+    <h2>暂无会话</h2>
+    <p>从商品详情页点击"联系卖家"即可发起会话</p>
+    <a class="btn" href="/">去逛逛</a>
+</div>
+
+<div class="platform-notice storage-notice">
+    <strong>数据说明：</strong>会话与消息仅保存在当前浏览器的本地存储中，刷新页面会保留；更换设备或清除浏览器数据后无法恢复。本演示不接入真实即时通讯服务。
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='messages.js') }}"></script>
+{% endblock %}

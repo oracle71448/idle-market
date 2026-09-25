@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}登录 - 闲置市场{% endblock %}
+{% block content %}
+<div class="auth-card">
+    <h1>登录</h1>
+    <p class="auth-sub">登录后可以发布商品、联系卖家</p>
+    <form id="login-form" data-next="{{ next }}" novalidate>
+        <div class="form-group">
+            <label for="username">用户名</label>
+            <input id="username" type="text" autocomplete="username" maxlength="20">
+        </div>
+        <div class="form-group">
+            <label for="password">密码</label>
+            <input id="password" type="password" autocomplete="current-password">
+        </div>
+        <div class="field-error hidden" id="auth-error"></div>
+        <button type="submit" class="btn btn-block">登录</button>
+    </form>
+    <p class="auth-alt">还没有账号？<a href="/register">去注册</a></p>
+    <p class="auth-hint">演示账号：阿橙 / demo123</p>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='auth.js') }}"></script>
+{% endblock %}

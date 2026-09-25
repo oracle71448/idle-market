@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}{% if edit_id %}编辑商品{% else %}发布闲置{% endif %} - 闲置市场{% endblock %}
+{% block content %}
+<section class="page-hero">
+    <h1>{% if edit_id %}编辑商品{% else %}发布闲置{% endif %}</h1>
+    <p>{% if edit_id %}修改商品信息{% else %}把用不上的好物分享给需要的人{% endif %}</p>
+</section>
+
+<div class="post-notice">发布身份：<strong id="post-user">小明</strong>（本地模拟账号，无需登录）</div>
+
+<form class="post-form" id="post-form" novalidate data-edit-id="{{ edit_id or '' }}">
+    <div class="form-group">
+        <label for="f-title">商品标题 <em>*</em></label>
+        <input id="f-title" type="text" maxlength="40" placeholder="例如：九成新 机械键盘 红轴">
+        <div class="field-error hidden" data-for="title"></div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label for="f-price">价格（元）<em>*</em></label>
+            <input id="f-price" type="number" min="0.01" step="0.01" inputmode="decimal" placeholder="0.00">
+            <div class="field-error hidden" data-for="price"></div>
+        </div>
+        <div class="form-group">
+            <label for="f-location">所在地区 <em>*</em></label>
+            <input id="f-location" type="text" maxlength="30" placeholder="例如：山东 济南">
+            <div class="field-error hidden" data-for="location"></div>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label for="f-category">商品类别 <em>*</em></label>
+            <select id="f-category"></select>
+        </div>
+        <div class="form-group">
+            <label for="f-condition">商品成色 <em>*</em></label>
+            <select id="f-condition"></select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="f-desc">商品描述</label>
+        <textarea id="f-desc" rows="4" maxlength="500" placeholder="补充成色细节、使用情况、入手渠道等"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label>商品图片（粘贴图片链接，本地预览）</label>
+        <div id="image-list"></div>
+        <button type="button" class="btn-ghost" id="add-image">添加一张图片</button>
+        <p class="form-hint">粘贴图片地址后自动预览，最多 6 张，第一张作为封面。</p>
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" class="btn btn-block" id="submit-btn">发布商品</button>
+    </div>
+</form>
+
+<div class="platform-notice">
+    <strong>请确保信息真实：</strong>平台仅用于商品展示与沟通，发布内容需真实准确，交易由买卖双方自行在线下或平台外完成。
+</div>
+<div class="platform-notice storage-notice">
+    <strong>数据说明：</strong>商品数据保存在当前浏览器的本地存储中，刷新页面会保留；更换设备或清除浏览器数据后无法恢复。
+</div>
+
+<div class="toast" id="toast">发布成功，商品已上架</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='post.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}发现 - 闲置市场{% endblock %}
+{% block content %}
+<section class="page-hero">
+    <h1>发现好物</h1>
+    <p>浏览闲置，淘到心仪好物</p>
+</section>
+
+<div class="search-box">
+    <input type="search" id="search-input" placeholder="搜索商品标题" autocomplete="off">
+    <button type="button" id="search-clear" class="search-clear hidden">清空</button>
+</div>
+
+<div class="category-bar" id="category-bar"></div>
+
+<div class="item-grid" id="item-grid"></div>
+
+<div class="empty-state hidden" id="empty-state">
+    <h2>没有找到相关商品</h2>
+    <p>换个关键词或分类再试试</p>
+    <button type="button" class="btn" id="reset-filters">查看全部商品</button>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='index.js') }}"></script>
+{% endblock %}
