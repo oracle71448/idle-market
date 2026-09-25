@@ -2,9 +2,7 @@ services:
   - type: web
     name: idle-market
     runtime: python
-    buildCommand: ""
     startCommand: "gunicorn app:app"
     envVars:
       - key: SECRET_KEY
         generateValue: true
-    plan: free
